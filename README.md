@@ -39,6 +39,53 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
+## More information
+
+- Possible configurations but it seems that it is already by default, in the package.json:
+
+```
+  "scripts":{
+    "dev": "NODE_ENV=development nodemon index.js",
+    "start": "NODE_ENV=production node index.js",
+    "test": "NODE_ENV=test jest --verbose"
+  }
+```
+
+- cross-env this is for windows only: npm -D cross-env
+
+```
+  "scripts":{
+    "dev": "cross-env NODE_ENV=development nodemon index.js",
+    "start": "cross-env NODE_ENV=production node index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose"
+  }
+```
+
+- This is for the configuration of eslint(so it knows you are working with jest) and jest (to specify the environment which is node)
+
+```
+  "eslintConfig":{
+    "extends": "./node_modules/standard/eslintrc.json",
+    "env":{
+      "jest":true
+    }
+  },
+  "jest":{
+    "testEnvironment": "node",
+  }
+```
+
+- `console.assert`: is used to verify assumptions in the code and display error message if those assumptions turn out to be incorrect. Its basic syntax is:
+
+```
+  console.log(condition, errorMessage)
+```
+
+- expect Jest: `toBeNull() toBeTruthy() toBeUndefined()`
+
+https://jestjs.io/docs/expect
+
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
